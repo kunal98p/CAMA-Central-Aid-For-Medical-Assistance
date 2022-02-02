@@ -1,0 +1,20 @@
+{
+  "name": "RMC Heath",
+  "short_name": "Medical",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fff",
+  "description": "A Centralized medical card Application.",
+  "icons": [
+    {
+      "src": "image3.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "image3.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
+}

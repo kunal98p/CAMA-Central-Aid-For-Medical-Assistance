@@ -1,0 +1,77 @@
+<div class="row">
+  <div class="col-md-6 mx-auto">
+    <div class="card card-body">
+      <h3 class="text-center lead mb-3">Patient Register</h3>
+      <form action="/patient/register" method="post">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" name="name" class="form-control" required>
+        </div>
+        <div class="form-group">
+          <label for="uid">Aadhar Card Number</label>
+          <input type="text" name="uid" class="form-control" required>
+        </div>
+        <div>
+          <p for="gender">Gender</p>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="gender" value="male">
+            <label class="form-check-label" for="gender">Male</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="gender" value="female">
+            <label class="form-check-label" for="gender">Female</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="gender" value="other">
+            <label class="form-check-label" for="gender">Others</label>
+          </div>
+        </div>
+        <br>
+
+        <div class="form-group">
+          <label for="age">Age</label>
+          <input type="text" name="age" class="form-control" required>
+        </div>
+        <div class="form-group">
+          <label for="weight">Weight</label>
+          <input type="text" name="weight" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+          <label for="height">Height</label>
+          <input type="text" name="height" class="form-control" required>
+        </div>
+        <div class="form-group">
+          <label for="bloodGroup">Blood Group</label>
+          <input type="text" name="bloodGroup" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+          <label for="city">City</label>
+          <select class="form-control" name="city">
+            <option>Rajkot</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="area">Area</label>
+          <select class="form-control" name="area">
+            <option>Select </option>
+            <option>Arya Nagar</option>
+            <option>Bhakti Nagar</option>
+            <option>Diwanpara</option>
+            <option>Gandhigram</option>
+            <option>Gavliwad</option>
+            <option>Jasraj Nagar</option>
+            <option>Gautamnagar</option>
+          </select>
+        </div>
+
+        <div class="text-center">
+          <button type="submit" class="btn btn-dark">Submit</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>

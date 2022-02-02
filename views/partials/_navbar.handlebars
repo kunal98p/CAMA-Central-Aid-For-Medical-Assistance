@@ -1,0 +1,42 @@
+<div class="navbar navbar-expand-lg navbar-dark mb-3">
+  <div class=" container">
+    <a class="navbar-brand" href="/">RMC Heath</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        {{#if user}}
+        <li class="nav-item active">
+          <a class="nav-link" href="/patient">Home <span class="sr-only">(current)</span></a>
+        </li>
+        {{/if}}
+        <li class="nav-item">
+          <a class="nav-link" href="/about">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link font-weight-bold" href="/gov">RMC</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/patient/login">Patient?</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto">
+
+        {{#if user}}
+
+        <li class="nav-item">
+          <a href="/users/logout" class="nav-link">Logout</a>
+        </li>
+
+        {{else}}
+        <li class="nav-item">
+          <a href="/users/login" class="nav-link">H/C Login</a>
+        </li>
+
+        {{/if}}
+      </ul>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,22 @@
+<div class="jumbotron text-center">
+  <h1 class="display-3">Welcome</h1>
+  <p class="lead">Medical Card Application</p>
+  <a href="/patient/login" class="btn btn-dark btn-lg">Explore</a>
+
+</div>
+
+<div class="col w-75 mx-auto" style="overflow: hidden;">
+  <p class="lead text-center text-white font-weight-bold">Government Notices </p>
+  <div style="border: 3px solid #ccc; padding: 10px ; cursor: pointer;"
+    onclick="document.getElementById('id01').style.display='block'">
+
+
+    <marquee direction="up" height="140px" scrollamount="1" class="text-center" style="overflow: hidden;" id="marq">
+      {{#each govData}}
+      <br>
+      <p class="text-white "><span class="btn btn-dark mr-2">{{type}} </span> {{message}}</p>
+      <br>
+      {{/each}}
+    </marquee>
+  </div>
+</div>

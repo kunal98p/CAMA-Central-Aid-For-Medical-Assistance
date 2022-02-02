@@ -1,0 +1,47 @@
+<div class="card card-body">
+  <h3>Add Medical</h3>
+  <form action="/medical" method="post">
+
+    <div class="form-group">
+      <label for="sel1">Broad Category </label>
+      <select class="form-control" name="title" value="{{title}}">
+        <option>Physical</option>
+        <option>Regular Checkup</option>
+        <option>Infectious </option>
+        <option>Non- infectious</option>
+        <option>Deficiency</option>
+        <option>Mental</option>
+        <option>Degenerative</option>
+        <option>Self Implicated</option>
+        <option>Heart Disease</option>
+        <option>Liver Disease</option>
+        <option>Cancer</option>
+        <option>Allergies/Asthma</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="title">Patient's Disease/Problem</label>
+      <input type="text" class="form-control" name="problem" required value="{{problem}}">
+    </div>
+    <div class="form-group">
+      <label for="details">Details</label>
+      <textarea class="form-control" name="details" required>{{details}}</textarea>
+    </div>
+    <div class="form-group">
+      <label for="details">Medicines Prescribed</label>
+      <textarea class="form-control" name="medicines" required>{{medicines}}</textarea>
+    </div>
+    <div class="form-group">
+      <label for="title">Duration of Course</label>
+      <input type="text" class="form-control" name="durationOfCourse" required value="{{durationOfCourse}}">
+    </div>
+    <div class="form-group">
+      <label for="details">Special note/comment</label>
+      <textarea class="form-control" name="note" required>{{note}}</textarea>
+    </div>
+    <div class="text-center">
+      <button type="submit" class="btn btn-primary ">Submit</button>
+    </div>
+  </form>
+
+</div>

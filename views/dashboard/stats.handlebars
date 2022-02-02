@@ -1,0 +1,43 @@
+<div id="loader" class="spinner-wrapper" onload="myFunction()">
+  <div class="spinner">
+    <div class="bounce1"></div>
+    <div class="bounce2"></div>
+    <div class="bounce3"></div>
+  </div>
+</div>
+<div id="myDiv">
+  <div class="text-center">
+    <div class="btn btn-block btn-warning mb-2">
+      <h4 class=" mb-2 mt-2 font-weight-bold" style="color: white;">Graphical Data</h4>
+    </div>
+    <br>
+    <div>
+      <iframe style="background: #21313C;border: none;border-radius: 2px;box-shadow: 0 2px 10px 0 rgba(70, 76, 79, .2);"
+        width="640" height="480"
+        src="https://charts.mongodb.com/charts-rmc-heath-cyolv/embed/charts?id=cd5dd36c-4d4b-4b86-8b64-653090f1234b&tenant=f16aadff-8c09-4e43-a9c3-d46958581858&theme=dark"></iframe>
+    </div>
+    <br>
+    <div>
+      <iframe style="background: #FFFFFF;border: none;border-radius: 2px;box-shadow: 0 2px 10px 0 rgba(70, 76, 79, .2);"
+        width="640" height="480"
+        src="https://charts.mongodb.com/charts-rmc-heath-cyolv/embed/charts?id=7106518e-42b3-4b7d-9959-522be0bcf3a6&tenant=f16aadff-8c09-4e43-a9c3-d46958581858&theme=light"></iframe>
+    </div>
+    <br>
+    <div>
+      <iframe style="background: #21313C;border: none;border-radius: 2px;box-shadow: 0 2px 10px 0 rgba(70, 76, 79, .2);"
+        width="640" height="480"
+        src="https://charts.mongodb.com/charts-rmc-heath-cyolv/embed/charts?id=8a6aafb5-1761-41b3-a6df-f21c2c7f50df&tenant=f16aadff-8c09-4e43-a9c3-d46958581858&theme=dark"></iframe>
+    </div>
+
+    <br>
+
+  </div>
+</div>
+<script>
+  setTimeout(function () {
+    document.getElementById("loader").style.display = "none"
+  }, 3500);
+
+
+
+</script>

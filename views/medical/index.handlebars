@@ -1,0 +1,620 @@
+<div class="row ">
+  {{#if user}}
+  <div class="col ">
+    <p class="text-white font-weight-bold">{{docDetails.hospital}}</p>
+    <h6 class="text-white">Your are Logged In as : Dr.{{docDetails.name}} ({{docDetails.department}})</h6>
+    <br>
+    <div class="ml-5">
+      <button class="btn btn-danger mb-2 mr-2" onclick="self.close()">Close Case</button>
+      <a href="/patient/login" class="btn btn-danger mb-2 mr-2">
+        Done
+      </a>
+    </div>
+  </div>
+
+  {{/if}}
+  {{#if user}}
+  {{else}}
+
+
+
+  <div id="id01" class="w3-modal ">
+    <div class="w3-modal-content">
+      <div class="w3-container scroll " style="height: 70vh;">
+        <span onclick=" document.getElementById('id01').style.display='none'"
+          class=" w3-button w3-display-topright">&times;</span>
+        <h5 class="lead text-center mt-2">RMC Notices and Schemes {{#each govData}} <span class="badge">
+            {{../govData.length}}
+          </span> {{/each}}</h5>
+        <br>
+        <input class="form-control mx-auto w-75 " id="searchScheme" type="text" onkeyup="searchSchema()"
+          placeholder="Search Schemes/Notices">
+
+        <br>
+        <div class="form-group w-25 text-center mx-auto">
+          <label for="city">Filter</label>
+          <select class="form-control" id="filtr">
+            <option onclick="searchSchema()">Select</option>
+
+            <option onclick="publicSchemes()" id="publicSchemes">Public Schemes</option>
+            <option onclick="GeneralNotices()" id="generalNotices">General Notice</option>
+          </select>
+        </div>
+        <br>
+        {{#each govData}}
+
+        <div class="yy">
+          <div class="row">
+            <div class="col-3">
+              {{#ifCond type "General Notice" }}
+              <h5 class="lead ttype btn btn-block btn-warning">{{type}} (GN)</h5>
+              {{/ifCond}}
+              {{#ifCond type "Public Schemes" }}
+              <h5 class="lead ttype btn btn-block btn-info">{{type}} (PS)</h5>
+              {{/ifCond}}
+
+            </div>
+            <div class="col-9">
+              <h5 class="lead text-right">{{date}}</h5>
+            </div>
+          </div>
+
+          <p class=" font-weight-bold m-3">=> {{message}}</p>
+        </div>
+        {{/each}}
+      </div>
+    </div>
+  </div>
+
+
+  <div class="col " style="overflow: hidden;">
+    <p class="lead text-center text-white font-weight-bold">Government Notices </p>
+    <div style="border: 3px solid #ccc; padding: 10px ; cursor: pointer;"
+      onclick="document.getElementById('id01').style.display='block'">
+      <marquee direction="up" height="120px" scrollamount="1" class="text-center" style="overflow: hidden;">
+        {{#each govData}}
+        <br>
+        <p class=" font-weight-bold">=> {{message}}</p>
+        <br>
+        {{/each}}
+      </marquee>
+    </div>
+  </div>
+  {{/if}}
+
+  <div class="col ">
+
+    <div class="text-right">
+      <button type="button" class="btn btn-success mb-2  ">
+        <h3> Hi {{patientDetails.name}}!</h3>
+        <h6>(This is your medical data)</h6>
+
+    </div>
+    <div class="text-right">
+      <button class="btn btn-warning " onclick="myF()">Emergency Contact <div id="myDIV" class="text-white"></div>
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+<br>
+<div class="table-responsive">
+  <table class="table table-dark">
+    <tbody>
+      <tr class="text-center">
+        <td scope="row">Name</td>
+        <td>Blood Group</td>
+        <td>Age</td>
+        <td>Weight</td>
+        <td>Height</td>
+        <td>Location</td>
+      </tr>
+      <tr class="text-center">
+
+        <td scope="row">{{patientDetails.name}}</td>
+        <td>{{patientDetails.bloodGroup}}</td>
+        <td>{{patientDetails.age}}</td>
+        <td>{{patientDetails.weight}}</td>
+        <td>{{patientDetails.height}}</td>
+        <td>{{patientDetails.area}},{{patientDetails.city}}</td>
+      </tr>
+
+    </tbody>
+  </table>
+</div>
+<br>
+
+<div class="container text-center ">
+
+  <div class="row">
+
+    <div class="col-sm">
+      <!-- Trigger/Open The Modal -->
+      <img src="https://img.icons8.com/android/24/000000/pill.png" id="myBtn" style="opacity: 0.6; cursor:pointer;">
+      <p class="text-white">(Active Presciptions)</p>
+
+      <!-- The Modal -->
+      <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+          <span class="close text-right">&times;</span>
+          <h4 class="font-weight-bold  ">Active Presciptions</h4>
+          <p></p>
+          <div class="table-responsive">
+            <table class="table table-striped container">
+
+              <thead>
+                <tr>
+                  <th scope=" col">Medicines</th>
+                  <th scope="col">Timing</th>
+                  <th scope="col">Medicines For</th>
+                  <th scope="col">To Be Taken Till</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Avidil,Tynol</td>
+                  <td>Morning:1, Evening:1</td>
+                  <td>Fracture (Pain Killer)</td>
+                  <td>25th March 2020</td>
+                </tr>
+                <tr>
+                  <td>Brufen,Zofra</td>
+                  <td>Morning:1, Night:1</td>
+                  <td>Malaria</td>
+                  <td>25th February 2020</td>
+                </tr>
+                <tr>
+                  <td>Crocin,Wicoryl,Metacin</td>
+                  <td>Morning:1, Night:1</td>
+                  <td>Cold</td>
+                  <td>1st February 2020</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="text-left">
+            <br>
+            <h6 class="font-weight-bold">Do you forget you medicine timings??</h6>
+            <h6 class="btn btn-block btn-warning" style="width: 15%;" onclick="notifications()">Enable Notifications
+            </h6>
+            <span id="notification" style="display: none; color: green" class="font-weight-bold">Notifications Enabled
+              on: 8140048448</span>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    <div class="col-sm">
+
+      <button type="button" class="btn btn-success mb-2  ">
+
+        <h3>Medical History</h3>
+      </button>
+
+    </div>
+
+    <div class="col-sm">
+      <img src="https://img.icons8.com/material/24/000000/appointment-reminders--v1.png" id="myBtn1"
+        style="opacity: 0.6; cursor:pointer;">
+      <p class="text-white ">(Recommendations)</p>
+      <!-- The Modal -->
+      <div id="myModal1" class="modal ">
+
+        <!-- Modal content -->
+        <div class="modal-content scroll">
+          <span class="close text-right">&times;</span>
+
+          <h4 class="font-weight-bold  ">Real Time Recommendations</h4>
+          <p></p>
+          <h5 class="container">Based on the analysis of your Medical data, it seems you had a lot of "Infectious
+            Diseases" in the
+            previous month . This is how you can take..</h5>
+          <div class="text-left">
+            <br>
+            <h6 class="font-weight-bold">* Wash your hands often</h6>
+            <h6 class="font-weight-bold">* Don't share personal items</h6>
+            <h6 class="font-weight-bold">* Stay at home if you have signs and symptoms of an infection</h6>
+            <h6 class="font-weight-bold">(For more get an advise from a Doctor..)</h6>
+          </div>
+
+          {{#if user}}
+          {{else}}
+          <div class="text-left">
+            {{#each medical}}
+            {{#ifCond @index 0}}
+            <div id="filterSchemes" style="display: none; ">{{problem}}</div>
+            {{/ifCond}}
+            {{/each}}
+            {{#each govData}}
+            <br>
+            <p id="d" style="display: none;" class="font-weight-bold text-center">These are some schemes/Notices that
+              might benifit you</p>
+            <p class="public"><span class="btn btn-dark mr-2 mb-2">{{type}} </span> {{message}}</p>
+
+            {{/each}}
+          </div>
+          {{/if}}
+        </div>
+
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<br>
+{{#if user}}
+<a href="medical/add" class="btn btn-block btn-primary w-25 mb-3 mx-auto">
+  <h5>Add New Case</h5>
+</a>
+{{/if}}
+
+
+<br>
+
+
+
+<div id="id02" class="w3-modal ">
+  <div class="w3-modal-content">
+    <div class="w3-container scroll " style="height: 70vh;">
+      <span onclick=" document.getElementById('id02').style.display='none'"
+        class=" w3-button w3-display-topright">&times;</span>
+      <br>
+      <p>Your Hidden/Archieved Medical Data</p>
+      <br>
+      {{#each medical}}
+      {{#ifCond visibility "0" }}
+      <div class="card card-body x mb-4 ">
+
+        <div class="row ">
+          <div class="col  ">
+            {{#if ../user }}
+            {{else}}
+            <form action="/medical/y/{{_id}}?_method=PUT" method="post">
+              <input type="hidden" name="_method" value="PUT">
+              <input name="visibility" value="1" style="display: none;">
+              <input type="submit" class="btn btn-danger mb-2" value="Un-Hide">
+            </form>
+
+            {{/if}}
+
+            <br>
+            <p id="hospital" class="font-weight-bold">Hospital:{{docDetails.hospital}}</p>
+            <p class="font-weight-bold">Attended by: Dr {{docDetails.name}} ({{docDetails.department}})</p>
+            <h4>Broad Category: {{title}}</h4>
+            <p class="search">Problem/disease: <span class="font-weight-bold">{{problem}}</span></p>
+          </div>
+
+          <div class="col ">
+            <div class="text-right">
+              <button type="button" class="btn btn-warning w-10 ">
+                <h6>{{date}}</h6>
+              </button>
+            </div>
+            <br>
+            <p>Details: {{details}} </p>
+            <p>Medicines Prescribed: <span class="font-weight-bold">{{medicines}}</span> </p>
+            <p>Duration of Course: <span class="font-weight-bold">{{durationOfCourse}}</span></p>
+            <p>Note/Comment (if any): {{note}} </p>
+            {{#ifCond @index 0}}
+            <p>Reports (if any): <span id="myBtn2" style="cursor: pointer;"> Reports</span>
+              <div id="myModal2" class="modal">
+                <!-- Modal content -->
+                <div class="modal-content">
+                  <span class="close text-right">&times;</span>
+                  <h4 class="font-weight-bold text-center">CT Scan Reports</h4>
+                  <p></p>
+                  <h5 class="container">These are your CT Scan Images</h5>
+                  <p></p>
+                  <img src="/css/img/image2.jpg">
+                </div>
+              </div>
+            </p>
+            {{/ifCond}}
+          </div>
+        </div>
+        <br>
+        {{#ifCond docDetails.hospital ../user.hospital}}
+        <div class="row ">
+          <div class="col  ">
+            <a class="btn btn-dark btn-block mb-2 w-50 mx-auto " href="/medical/edit/{{id}}" method="post">Edit</a>
+          </div>
+          <div class="col ">
+            <form method="post" action="/medical/{{id}}?_method=DELETE">
+              <input type="hidden" name="_method" value="DELETE">
+              <input type="submit" class="btn btn-danger btn-block mx-auto w-50" value="Delete">
+            </form>
+
+          </div>
+        </div>
+        {{/ifCond}}
+
+      </div>
+      {{/ifCond}}
+      {{/each}}
+
+    </div>
+  </div>
+</div>
+
+{{#if user}}
+{{else}}
+
+<div style=" cursor: pointer;" class="mb-2" onclick="document.getElementById('id02').style.display='block'">
+  <div class="btn btn-warning">View Archieve</div>
+</div>
+
+{{/if}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{{#each medical}}
+{{#ifCond visibility "1"}}
+<div class="card card-body x mb-4 ">
+
+  <div class="row ">
+    <div class="col  ">
+      {{#if ../user }}
+      {{else}}
+      <form action="/medical/x/{{_id}}?_method=PUT" method="post">
+        <input type="hidden" name="_method" value="PUT">
+        <input name="visibility" value="0" style="display: none;">
+        <input type="submit" class="btn btn-danger mb-2" value="Hide">
+      </form>
+      {{/if}}
+
+      <br>
+      <p id="hospital" class="font-weight-bold">Hospital:{{docDetails.hospital}}</p>
+      <p class="font-weight-bold">Attended by: Dr {{docDetails.name}} ({{docDetails.department}})</p>
+      <h4>Broad Category: {{title}}</h4>
+      <p class="search">Problem/disease: <span class="font-weight-bold">{{problem}}</span></p>
+    </div>
+
+    <div class="col ">
+      <div class="text-right">
+        <button type="button" class="btn btn-warning w-10 ">
+          <h6>{{date}}</h6>
+        </button>
+      </div>
+      <br>
+      <p>Details: {{details}} </p>
+      <p>Medicines Prescribed: <span class="font-weight-bold">{{medicines}}</span> </p>
+      <p>Duration of Course: <span class="font-weight-bold">{{durationOfCourse}}</span></p>
+      <p>Note/Comment (if any): {{note}} </p>
+      {{#ifCond @index 0}}
+      <p>Reports (if any): <span id="myBtn2" style="cursor: pointer;"> Reports</span>
+        <div id="myModal2" class="modal">
+          <!-- Modal content -->
+          <div class="modal-content">
+            <span class="close text-right">&times;</span>
+            <h4 class="font-weight-bold text-center">CT Scan Reports</h4>
+            <p></p>
+            <h5 class="container">These are your CT Scan Images</h5>
+            <p></p>
+            <img src="/css/img/image2.jpg">
+          </div>
+        </div>
+      </p>
+      {{/ifCond}}
+    </div>
+  </div>
+  <br>
+  {{#ifCond docDetails.hospital ../user.hospital}}
+  <div class="row ">
+    <div class="col  ">
+      <a class="btn btn-dark btn-block mb-2 w-50 mx-auto " href="/medical/edit/{{id}}" method="post">Edit</a>
+    </div>
+    <div class="col ">
+      <form method="post" action="/medical/{{id}}?_method=DELETE">
+        <input type="hidden" name="_method" value="DELETE">
+        <input type="submit" class="btn btn-danger btn-block mx-auto w-50" value="Delete">
+      </form>
+
+    </div>
+  </div>
+  {{/ifCond}}
+
+</div>
+
+{{/ifCond }}
+{{else}}
+<p class="text-white text-center">No Medical History
+</p>
+
+{{/each}}
+
+<script>
+  // Get the modal
+  var modal = document.getElementById("myModal");
+  var modal1 = document.getElementById("myModal1");
+  var modal2 = document.getElementById("myModal2");
+
+  // Get the button that opens the modal
+  var btn = document.getElementById("myBtn");
+  var btn1 = document.getElementById("myBtn1");
+  var btn2 = document.getElementById("myBtn2");
+
+  // Get the <span> element that closes the modal
+  var span = document.getElementsByClassName("close")[0];
+  var span1 = document.getElementsByClassName("close")[1];
+  var span2 = document.getElementsByClassName("close")[2];
+
+
+  // When the user clicks the button, open the modal 
+  btn.onclick = function () {
+    modal.style.display = "block";
+  }
+  btn1.onclick = function () {
+    modal1.style.display = "block";
+  }
+  btn2.onclick = function () {
+    modal2.style.display = "block";
+  }
+
+  // When the user clicks on <span> (x), close the modal
+  span.onclick = function () {
+    modal.style.display = "none";
+  }
+  span1.onclick = function () {
+    modal1.style.display = "none";
+  }
+  span2.onclick = function () {
+    modal2.style.display = "none";
+  }
+
+
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function (event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
+
+  function notifications() {
+    document.getElementById("notification").style.display = "block";
+  }
+
+</script>
+
+<script>
+  var input, filter, ul, li, a, i, str, txtValue;
+
+  input = document.getElementById("filterSchemes")
+  filter = input.innerText.toUpperCase();
+
+  ul = document.getElementsByClassName("public");
+
+  let flag = 0;
+  for (i = 0; i < ul.length; i++) {
+    str = ul[i].innerText.toUpperCase();
+
+    if (str.includes(filter)) {
+      ul[i].style.display = "";
+      flag = 1;
+    }
+    else {
+      ul[i].style.display = "none";
+    }
+  }
+  if (flag === 1) {
+    document.getElementById("d").style.display = "";
+  }
+
+
+  function myFunction() {
+    input = document.getElementById("myInput")
+    filter = input.value.toUpperCase();
+
+
+    ul = document.getElementsByClassName("x");
+    li = document.getElementsByClassName("search");
+
+    for (i = 0; i < li.length; i++) {
+      str = li[i].innerText.toUpperCase();
+
+      if (str.includes(filter)) {
+        ul[i].style.display = "";
+      }
+      else {
+        ul[i].style.display = "none";
+      }
+    }
+  }
+  ul = document.getElementsByClassName("yy");
+  function searchSchema() {
+    input = document.getElementById("searchScheme")
+
+    filter = input.value.toUpperCase();
+
+
+
+    for (i = 0; i < ul.length; i++) {
+      str = ul[i].innerText.toUpperCase();
+
+      if (str.includes(filter)) {
+        ul[i].style.display = "";
+      }
+      else {
+        ul[i].style.display = "none";
+      }
+    }
+  }
+  function GeneralNotices() {
+    input = document.getElementById("generalNotices")
+
+    filter = input.value.toUpperCase();
+
+
+
+    li = document.getElementsByClassName("ttype");
+
+    for (i = 0; i < li.length; i++) {
+      str = li[i].innerText.toUpperCase();
+      console.log(str)
+      if (str.includes(filter)) {
+        ul[i].style.display = "";
+      }
+      else {
+        ul[i].style.display = "none";
+      }
+    }
+  }
+  function publicSchemes() {
+    input = document.getElementById("publicSchemes")
+
+    filter = input.value.toUpperCase();
+
+
+
+    li = document.getElementsByClassName("ttype");
+
+    for (i = 0; i < li.length; i++) {
+      str = li[i].innerText.toUpperCase();
+
+      if (str.includes(filter)) {
+        ul[i].style.display = "";
+      }
+      else {
+        ul[i].style.display = "none";
+      }
+    }
+  }
+</script>
+<script>
+
+  ///////////////////PROTOTYPE VERSION////////////////////
+  function myF() {
+    let x = document.getElementById("myDIV");
+    if (x.innerHTML === "") {
+      x.innerHTML = "Mom: 8238872464";
+    } else {
+      x.innerHTML = "";
+    }
+  }
+
+
+//////////////////////////////////////////////////////////////////
+</script>

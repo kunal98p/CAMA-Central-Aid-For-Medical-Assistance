@@ -1,0 +1,60 @@
+{{#each errors}}
+<div class="alert alert-danger">{{text}}</div>
+{{else}}
+
+{{/each}}
+
+<div class="card card-body">
+
+  <h3>Edit Medical</h3>
+  <form action="/medical/{{medical.id}}?_method=PUT" method="post">
+    <input type="hidden" name="_method" value="PUT">
+    <div class="card card-body">
+      <h3>Add Medical</h3>
+      <form action="/medical" method="post">
+
+        <div class="form-group">
+          <label for="sel1">Broad Category </label>
+          <select class="form-control" name="title">
+            <option>Physical</option>
+            <option>Infectious </option>
+            <option>Non- infectious</option>
+            <option>Deficiency</option>
+            <option>Mental</option>
+            <option>Degenerative</option>
+            <option>Self Implicated</option>
+            <option>Heart Disease</option>
+            <option>Liver Disease</option>
+            <option>Cancer</option>
+            <option>Allergies/Asthma</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="title">Patient's Disease/Problem</label>
+          <input type="text" class="form-control" name="problem" required value="{{medical.problem}}">
+        </div>
+        <div class="form-group">
+          <label for="details">Details</label>
+          <textarea class="form-control" name="details" required>{{medical.details}}</textarea>
+        </div>
+        <div class="form-group">
+          <label for="details">Medicines Prescribed</label>
+          <textarea class="form-control" name="medicines" required>{{medical.medicines}}</textarea>
+        </div>
+        <div class="form-group">
+          <label for="title">Duration of Course</label>
+          <input type="text" class="form-control" name="durationOfCourse" required value="{{medical.durationOfCourse}}">
+        </div>
+        <div class="form-group">
+          <label for="details">Special note/comment</label>
+          <textarea class="form-control" name="note" required>{{medical.note}}</textarea>
+        </div>
+        <div class="text-center">
+          <button type="submit" class="btn btn-primary ">Submit</button>
+        </div>
+      </form>
+
+    </div>
+  </form>
+
+</div>
